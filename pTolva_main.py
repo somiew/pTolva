@@ -1,3 +1,4 @@
+# Using python 3.6.8
 import discord
 from discord.ext import commands
 import asyncio
@@ -86,7 +87,7 @@ async def on_message(message):
 
     if message.content.startswith('pTolva'):
         await message.channel.send('Hi, I am p12a! My available commands are: ')
-        await message.channel.send('members p12a?, online p12a?, copy, paste, /cats and ')
+        await message.channel.send('members p12a?, online p12a?, copy, paste, /cats, /r nameofyoursubreddit and ')
         await message.channel.send('roll d n, where n is the highest number on the dice')
 
     elif message.content.startswith('cookie'):
@@ -143,6 +144,11 @@ async def cats(ctx):
     post_to_pick = random.randint(1, 10)
     for i in range(0, post_to_pick):
         submission = next(x for x in cats_submissions if not x.stickied)
+    await ctx.send(submission.url)
+
+@client.command()
+async def r(ctx, nameOfSubreddit):
+    submission = next(reddit.subreddit(nameOfSubreddit).top("month"))
     await ctx.send(submission.url)
 
 client.run(token)

@@ -4,7 +4,7 @@ import asyncio
 import random
 import praw  # Reddit stuff
 
-# Read token from token.txt
+# Read discord token from token.txt
 def read_token():
     with open("token.txt", "r") as f:
         lines = f.readlines()
@@ -15,9 +15,23 @@ token = read_token()
 # Client = discord.Client() #old version? couldn't use commands
 client = commands.Bot(command_prefix = '/') # I must be doing something wrong because I can't get my @client.command to work.
 
+# Read reddit ID and Secret
+def readClientID():
+    with open("redditClientID.txt", "r") as f:
+        lines = f.readlines()
+        return lines[0].strip()
+
+def readClientSecret():
+    with open("redditClientSecret.txt", "r") as f:
+        lines = f.readlines()
+        return lines[0].strip()
+
+redditClientID = readClientID()
+redditClientSecret = readClientSecret()
+
 # All the reddit ID's needed
-reddit = praw.Reddit(client_id='NYIEODiahZoluA',
-                     client_secret='jyucKWAtTLs7P59fiv2BEPFIyho',
+reddit = praw.Reddit(client_id=redditClientID,
+                     client_secret=redditClientSecret,
                      user_agent='pTolva')
 
 def onlinep12a(guild):

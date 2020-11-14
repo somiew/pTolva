@@ -99,12 +99,12 @@ async def on_message(message):
     elif "armor" in message.content.lower():
         await message.channel.send('Armour*')
 
-    elif "69" in message.content.lower():
-        await message.channel.send('hehe nice')
+    #elif "69 " in message.content.lower():                    # GETS OLD QUITE FAST
+    #    await message.channel.send('hehe nice')
 
-    elif "fucking p12a" in message.content.lower():
-        await message.channel.send('logging out :upside_down:')
-        await client.close()
+    #elif "fucking p12a" in message.content.lower():        # DANGEROUS TO LET OTHERS TURN IT OF!
+    #    await message.channel.send('logging out :upside_down:')
+    #    await client.close()
 
     # Writes the line above the message 'copy' to copied.txt
     elif message.content.startswith('copy'):
